@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عربة التسوق</title>
+ <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- nice select  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+  <!-- font awesome style -->
+  <link href="css/all.min.css" rel="stylesheet" />
+  
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/rtl.css" rel="stylesheet" />
+</head>
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="images/hero-bg.jpg" alt="">
+    </div>
+    <!-- header section strats -->
+<div id="header">
+
+</div>
+    <!-- end header section -->
+  </div>
+
+    <div class="container cart-page-container">
+        <h2>عربة التسوق الخاصة بك</h2>
+
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>المنتج</th>
+                    <th>السعر</th>
+                    <th>الكمية</th>
+                    <th>الإجمالي</th>
+                    <th>إزالة</th>
+                </tr>
+            </thead>
+            <tbody id="cart-table-body">
+                
+                <tr class="cart-item-template" style="display: none;">
+                    <td class="product-details">
+                        <img src="images/f1.png" alt="Product Image">
+                        <p class="product-name">اسم المنتج</p>
+                    </td>
+                    <td class="product-price">10.00 جنيه</td>
+                    <td class="product-quantity">
+                        <input type="number" value="1" min="1" class="quantity-input">
+                    </td>
+                    <td class="product-total">10.00 جنيه</td>
+                    <td class="product-remove">
+                        <button class="remove-btn">إزالة</button>
+                    </td>
+                </tr>
+
+            </tbody>
+            <tfoot id="cart-summary">
+                <tr>
+                    <td colspan="3"><strong>الإجمالي الفرعي:</strong></td>
+                    <td colspan="2" class="subtotal-value">0.00 جنيه</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><strong>الإجمالي النهائي:</strong></td>
+                    <td colspan="2" class="total-value">0.00 جنيه</td>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <div class="cart-page-actions">
+            <a href="checkout.html" class="btn checkout-btn">الانتقال للدفع</a>
+            <a href="index.html" class="btn continue-shopping">متابعة التسوق</a>
+        </div>
+        
+        <div id="empty-cart-message" style="display: none; text-align: center; padding: 50px;">
+            <h3>عربتك فارغة حالياً.</h3>
+        </div>
+
+    </div>
+
+   <footer class="footer_section">
+    <div id="footer">
+    </div>
+  </footer>
+ <div id="cartPopup">
+
+ </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/custom.js"></script> 
+</body>
+</html>

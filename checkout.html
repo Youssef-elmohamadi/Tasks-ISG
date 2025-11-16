@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الطلب</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link href="css/all.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/rtl.css" rel="stylesheet" />
+</head>
+<body class="sub_page">
+
+    <div class="hero_area">
+        <div class="bg-box">
+            <img src="images/hero-bg.jpg" alt="">
+        </div>
+        <div id="header"></div>
+        </div>
+
+    <section class="checkout_section layout_padding">
+        <div class="container checkout-container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="billing-details">
+                        <h3>تفاصيل الفاتورة</h3>
+                        <form id="checkout-form">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="checkout-name">الاسم بالكامل <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="checkout-name" required>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="checkout-phone">رقم الهاتف <span class="required">*</span></label>
+                                    <input type="tel" class="form-control" id="checkout-phone" required>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="checkout-address">العنوان بالتفصيل <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="checkout-address" placeholder="اسم الشارع، رقم المبنى، الدور، الشقة" required>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="checkout-notes">ملاحظات الطلب (اختياري)</label>
+                                    <textarea class="form-control" id="checkout-notes" rows="3" placeholder="أضف أي ملاحظات خاصة بطلبك هنا..."></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="order-summary">
+                        <h3>ملخص طلبك</h3>
+                        
+                        <div id="checkout-items-list">
+                            <div class="summary-item">
+                                <span>(1x) بيتزا لذيذة</span>
+                                <span>40.00 جنيه</span>
+                            </div>
+                        </div>
+
+                        <div class="summary-details">
+                            <div class="summary-item">
+                                <span>الإجمالي الفرعي</span>
+                                <span id="checkout-subtotal">0.00 جنيه</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>رسوم التوصيل</span>
+                                <span id="checkout-delivery">15.00 جنيه</span>
+                            </div>
+                            <hr>
+                            <div class="summary-item total">
+                                <span>الإجمالي النهائي</span>
+                                <span id="checkout-total">0.00 جنيه</span>
+                            </div>
+                        </div>
+
+                        <div class="payment-method">
+                            <h4>اختر طريقة الدفع</h4>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="cod" name="paymentMethod" class="custom-control-input" value="cod" checked>
+                                <label class="custom-control-label" for="cod">الدفع عند الاستلام</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="credit-card" name="paymentMethod" class="custom-control-input" value="card">
+                                <label class="custom-control-label" for="credit-card">الدفع أونلاين</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" form="checkout-form" class="btn btn-warning btn-block btn-place-order">
+                            تأكيد الطلب
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer_section">
+        <div id="footer"></div>
+    </footer>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>
