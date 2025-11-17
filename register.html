@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد - ابن الشام</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link href="css/all.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/rtl.css" rel="stylesheet" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="split-screen">
+        <div class="container-fluid h-100 p-0">
+            <div class="row h-100 g-0">
+                
+                <div class="col-lg-5 brand-side d-none d-lg-flex align-items-center justify-content-center">
+                    <div class="overlay"></div>
+                    <div class="brand-content text-center">
+                        <img src="images/logo-3.png" alt="Ibn Al Sham" style="max-width: 160px; margin-bottom: 20px;">
+                        <h1 class="text-white fw-bold">انضم لعائلتنا</h1>
+                        <p class="text-white-50 mt-2">سجل حسابك الآن وتمتع بأفضل العروض الشامية</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 form-side long-content">
+                    <div class="form-container">
+                        
+                        <div class="text-center mb-4 d-lg-none">
+                            <img src="images/logo-3.png" alt="Logo" width="100">
+                        </div>
+
+                        <div class="text-center text-lg-end mb-4">
+                            <h2 class="fw-bold">إنشاء حساب جديد</h2>
+                            <p class="text-muted">املأ البيانات التالية لإنشاء حسابك</p>
+                        </div>
+
+                        <form action="#">
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">الاسم الأول <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control custom-input" placeholder="الاسم الأول">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">اسم العائلة <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control custom-input" placeholder="اسم العائلة">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">البريد الإلكتروني <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control custom-input" placeholder="name@example.com">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">كلمة المرور <span class="text-danger">*</span></label>
+                                <div class="position-relative">
+                                    <input type="password" id="regPass" class="form-control custom-input" placeholder="أدخل كلمة مرور قوية" style="padding-left: 40px;">
+                                    <span onclick="toggleRegPassword()" style="position: absolute; top: 50%; left: 15px; transform: translateY(-50%); cursor: pointer; color: #999;">
+                                        <i class="fa-regular fa-eye" id="regEye"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">رقم الهاتف <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control custom-input" placeholder="01xxxxxxxxx" style="direction: ltr; text-align: right;">
+                            </div>
+
+                            <hr class="my-4" style="opacity: 0.1;">
+
+                            <div class="mb-3">
+                                <label class="form-label">العنوان الرئيسي (مطلوب) <span class="text-danger">*</span></label>
+                                <textarea class="form-control custom-input" rows="2" placeholder="اسم الشارع، رقم المبنى، تفاصيل العنوان..."></textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">عنوان إضافي (اختياري)</label>
+                                <textarea class="form-control custom-input" rows="2" placeholder="عنوان العمل أو منزل آخر..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-register w-100 py-3 mb-3">تسجيل الحساب</button>
+
+                            <div class="text-center">
+                                <span class="text-muted">لديك حساب بالفعل؟ </span>
+                                <a href="login.html" class="text-decoration-none fw-bold" style="color: #ffbe33;">تسجيل الدخول</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        function toggleRegPassword() {
+            const input = document.getElementById("regPass");
+            const icon = document.getElementById("regEye");
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+</body>
+</html>

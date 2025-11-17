@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - ابن الشام</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link href="css/all.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/rtl.css" rel="stylesheet" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="login-split-screen">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                
+                <div class="col-lg-6 brand-side d-none d-lg-flex align-items-center justify-content-center position-relative">
+                    <div class="overlay"></div>
+                    <div class="brand-content text-center position-relative">
+                        <img src="images/logo-3.png" alt="لوجو ابن الشام" class="login-brand-logo mb-4">
+                        
+                        <h1 class="text-white fw-bold mb-2">ابن الشام</h1>
+                        <p class="text-white-50 fs-5">أصل الأكل الشامي.. طعم لا يُقاوم</p>
+                        
+                        <div class="mt-4">
+                            <p class="text-warning mb-0">خصومات مميزة للأعضاء المسجلين</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-pattern"></div>
+                </div>
+
+                <div class="col-lg-6 form-side d-flex align-items-center justify-content-center bg-white">
+                    <div class="login-form-container w-100" style="max-width: 450px; padding: 20px;">
+                        
+                        <div class="text-center mb-5 d-lg-none">
+                            <img src="images/logo-3.png" alt="Ibn Al Sham" width="80"> 
+                        </div>
+
+                        <div class="mb-5 text-center text-lg-end">
+                            <h2 class="fw-bold mb-2 text-dark">تسجيل الدخول إلى حسابك</h2>
+                            <p class="text-muted">أدخل بريدك الإلكتروني وكلمة المرور للمتابعة</p>
+                        </div>
+
+                        <form action="#">
+                            <div class="form-group mb-4">
+                                <label class="form-label fw-bold text-dark">البريد الإلكتروني <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control custom-input" placeholder="name@example.com">
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label class="form-label fw-bold text-dark">كلمة المرور <span class="text-danger">*</span></label>
+                                <div class="password-wrapper position-relative">
+                                    <input type="password" id="passwordInput" class="form-control custom-input" placeholder="أدخل كلمة المرور">
+                                    <span class="toggle-password" onclick="togglePassword()">
+                                        <i class="fa-regular fa-eye" id="eyeIcon"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <a href="register.html" class="text-decoration-none text-warning fw-bold">إنشاء حساب جديد</a>
+                                <a href="#" class="text-decoration-none text-muted small">نسيت كلمة المرور؟</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-warning w-100 py-3 fw-bold text-white btn-login">
+                                تسجيل الدخول
+                            </button>
+                        </form>
+
+                        <div class="text-center mt-4">
+                            <a href="index.html" class="text-muted text-decoration-none small">
+                                <i class="fa-solid fa-arrow-right ms-1"></i> العودة للصفحة الرئيسية
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        function togglePassword() {
+            const input = document.getElementById("passwordInput");
+            const icon = document.getElementById("eyeIcon");
+            
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+</body>
+</html>

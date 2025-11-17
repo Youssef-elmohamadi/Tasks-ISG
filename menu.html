@@ -50,34 +50,67 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Our Menu
+          منتجاتنا
         </h2>
       </div>
 <div class="d-md-flex ">
     
-    <div class="products_sidebar m-3 p-3 d-none d-md-block  flex-shrink-0">
-        <div class="sidebar-section mb-2 categories border p-3">
-            <div id="collapseCategory" class="d-flex justify-content-between align-items-center">
-                <h3 class="fs-5 fw-bold mb-2 me-2">التصنيفات</h3>
-                <i class="fa-solid fa-angle-up"></i>
-            </div>
-            <ul class="category-list">
-                <li  class="p-1 active category-item"><a class="text-decoration-none fs-6 d-block " href="#">جميع التصنيفات</a></li>
-                <li  class="p-1 category-item"><a class="text-decoration-none fs-6 d-block " href="#">خضراوات</a></li>
-            </ul>
+<div class="products_sidebar m-3 p-3 d-none d-md-block flex-shrink-0">
+    
+    <div class="sidebar-section mb-4 categories border p-3 rounded">
+        <div id="collapseCategory" class="d-flex justify-content-between align-items-center section-header cursor-pointer">
+            <h3 class="fs-5 fw-bold mb-0">التصنيفات</h3>
+            <i class="fa-solid fa-angle-up main-arrow"></i>
         </div>
 
-       <div class="sidebar-section mb-2 brands border p-3">
-            <div id="collapseBrand" class="d-flex justify-content-between align-items-center">
-                <h3 class="fs-5 fw-bold mb-2 me-2">العلامة التجارية</h3>
-                <i class="fa-solid fa-angle-up"></i>
-            </div>
-            <ul class="brand-list">
-                <li class="p-1 active brand-item"><a class="text-decoration-none fs-6 d-block " href="#">جميع التصنيفات</a></li>
-                <li class="p-1 brand-item"><a class="text-decoration-none fs-6 d-block" href="#">روابي</a></li>
-            </ul>
-        </div>
+        <ul class="category-list mt-3">
+            <li class="category-item active">
+                <a href="#">جميع التصنيفات</a>
+            </li>
+
+            <li class="has-child">
+                <div class="parent-link">
+                    <span>خضراوات</span>
+                    <i class="fa-solid fa-angle-left sub-arrow"></i>
+                </div>
+                
+                <ul class="sub-menu">
+                    <li><a href="#">طازجة</a></li>
+                    <li><a href="#">مجمدة</a></li>
+                    <li><a href="#">عضوية</a></li>
+                </ul>
+            </li>
+
+            <li class="category-item">
+                <a href="#">فواكه</a>
+            </li>
+             <li class="has-child">
+                <div class="parent-link">
+                    <span>ألبان وأجبان</span>
+                    <i class="fa-solid fa-angle-left sub-arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="#">حليب</a></li>
+                    <li><a href="#">جبن</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
+
+    <div class="sidebar-section mb-2 brands border p-3 rounded">
+        <div id="collapseBrand" class="d-flex justify-content-between align-items-center section-header cursor-pointer">
+            <h3 class="fs-5 fw-bold mb-0">العلامة التجارية</h3>
+            <i class="fa-solid fa-angle-up main-arrow"></i>
+        </div>
+        <ul class="brand-list mt-3">
+            <li class="brand-item active"><a href="#">الكل</a></li>
+            <li class="brand-item"><a href="#">روابي</a></li>
+            <li class="brand-item"><a href="#">الضحى</a></li>
+            <li class="brand-item"><a href="#">جهينة</a></li>
+        </ul>
+    </div>
+
+</div>
     
     <div class="flex-grow-1" >
         
@@ -325,6 +358,39 @@
 </div>
 
 <div class="product-card position-relative border">
+        <span class="discount-badge p-1">20% خصم</span>
+    <span class="favorite-icon"><i class="fa-regular fa-heart"></i></span>
+
+    <div class="image-wrapper">
+        <img src="./images/p2.jpg" alt="بابريكا مطحونة">
+    </div>
+    <div class="product-details">
+        <p class="product-name">أرز بسمتي فاخر</p>
+        <span class="category-name d-none">حبوب</span> <span class="brand-name d-none">الضحى</span>
+    </div>
+    
+    <div class="prices">
+        <span class="final-price">60 جنيه</span>
+        <del class="original-price">30 جنيه</del>
+    </div>
+
+    <button class="add-to-cart-btn"
+        data-id="201" 
+        data-name="أرز بسمتي فاخر"
+        data-price="60" 
+        data-image="images/p2.jpg"
+        data-category="حبوب وبقوليات"
+        data-brand="الضحى"
+        data-description="أرز بسمتي هندي طويل الحبة، درجة أولى."
+        data-variants='[
+            {"id": "201-1KG", "name": "1 كيلو", "price": 60, "old_price": 70},
+            {"id": "201-5KG", "name": "5 كيلو", "price": 280, "old_price": 300}
+        ]'>
+        أضف إلى السلة
+    </button>
+</div>
+
+<div class="product-card position-relative border">
     <span class="discount-badge p-1">25% خصم</span>
     <span class="favorite-icon"><i class="fa-regular fa-heart"></i></span>
 
@@ -374,7 +440,63 @@
   </section>
 
   <!-- end food section -->
+<div id="product-modal-overlay" class="product-modal-overlay">
+    <div class="product-modal-content">
+        <span class="modal-close-btn">&times;</span>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5 modal-image-col">
+                    <img id="modal-product-image" src="" alt="صورة المنتج">
+                </div>
+                
+                <div class="col-md-7 modal-details-col">
+                    <div class="product-meta mb-2">
+                        <span id="modal-product-category" class="meta-badge category-badge">تصنيف</span>
+                        <span id="modal-product-brand" class="meta-badge brand-badge">ماركة</span>
+                    </div>
 
+                    <h2 id="modal-product-name">اسم المنتج</h2>
+                    
+                    <div class="prices d-flex align-items-center">
+                        <span id="modal-product-final-price" class="final-price"></span>
+                        <del id="modal-product-original-price" class="original-price ms-2"></del>
+                    </div>
+
+                    <div id="modal-product-rating" class="rating"></div>
+
+                    <p id="modal-product-description">وصف المنتج...</p>
+
+                    <hr>
+
+                    <div id="modal-variants-section" class="mb-3" style="display:none;">
+                        <h6 class="option-title">اختر الحجم / الوزن:</h6>
+                        <div id="modal-variants-container" class="variants-wrapper">
+                            </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6 class="option-title">الكمية:</h6>
+                            <div class="quantity-wrapper">
+                                <button type="button" class="qty-btn minus">-</button>
+                                <input type="number" id="modal-quantity-input" value="1" min="1" readonly>
+                                <button type="button" class="qty-btn plus">+</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <h6 class="option-title">ملاحظات خاصة (اختياري):</h6>
+                            <textarea id="modal-product-notes" class="form-control notes-area" rows="2" placeholder="مثال: بدون ملح، تغليف إضافي..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <button id="modal-add-to-cart-btn" class="add-to-cart-btn mt-2">
+                        أضف إلى السلة - <span id="modal-btn-price"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   <!-- footer section -->
   <footer class="footer_section">
     <div id="footer">
