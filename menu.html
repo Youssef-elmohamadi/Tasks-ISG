@@ -358,26 +358,35 @@
 </div>
 
 <div class="product-card position-relative border">
-        <span class="discount-badge p-1">20% خصم</span>
+    <span class="discount-badge p-1">20% خصم</span>
     <span class="favorite-icon"><i class="fa-regular fa-heart"></i></span>
 
     <div class="image-wrapper">
-        <img src="./images/p2.jpg" alt="بابريكا مطحونة">
+        <img src="./images/p2.jpg" alt="أرز بسمتي فاخر">
     </div>
+    
     <div class="product-details">
         <p class="product-name">أرز بسمتي فاخر</p>
-        <span class="category-name d-none">حبوب</span> <span class="brand-name d-none">الضحى</span>
+        <span class="category-name d-none">حبوب</span> 
+        <span class="brand-name d-none">الضحى</span>
     </div>
     
     <div class="prices">
-        <span class="final-price">60 جنيه</span>
-        <del class="original-price">30 جنيه</del>
+        <span class="final-price">60 - 280 جنيه</span>
+        </div>
+
+    <div class="rating">
+        <span data-value="5">★</span>
+        <span data-value="4">★</span>
+        <span data-value="3">★</span>
+        <span data-value="2">★</span>
+        <span data-value="1">★</span>
     </div>
 
     <button class="add-to-cart-btn"
         data-id="201" 
         data-name="أرز بسمتي فاخر"
-        data-price="60" 
+        data-price="60"  /* هذا السعر سيتم تجاهله عند فتح المودال لأننا نعتمد على الـ variants */
         data-image="images/p2.jpg"
         data-category="حبوب وبقوليات"
         data-brand="الضحى"
@@ -440,6 +449,7 @@
   </section>
 
   <!-- end food section -->
+   <!-- Product Modal  -->
 <div id="product-modal-overlay" class="product-modal-overlay">
     <div class="product-modal-content">
         <span class="modal-close-btn">&times;</span>
@@ -469,7 +479,7 @@
                     <hr>
 
                     <div id="modal-variants-section" class="mb-3" style="display:none;">
-                        <h6 class="option-title">اختر الحجم / الوزن:</h6>
+                        <h6 class="option-title">اختر الاصدار:</h6>
                         <div id="modal-variants-container" class="variants-wrapper">
                             </div>
                     </div>
@@ -490,7 +500,7 @@
                     </div>
                     
                     <button id="modal-add-to-cart-btn" class="add-to-cart-btn mt-2">
-                        أضف إلى السلة - <span id="modal-btn-price"></span>
+                        أضف إلى السلة  
                     </button>
                 </div>
             </div>

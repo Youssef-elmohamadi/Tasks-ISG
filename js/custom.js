@@ -341,14 +341,11 @@ $(document).ready(function () {
     });
 
     $('.has-child .parent-link').click(function(e) {
-    e.preventDefault();
-    
-    const parentLi = $(this).closest('.has-child');
-    
-    parentLi.find('.sub-menu').slideToggle(300);
-    
-    parentLi.toggleClass('open');
-});
+        e.preventDefault();
+        const parentLi = $(this).closest('.has-child');
+        parentLi.find('.sub-menu').slideToggle(300);
+        parentLi.toggleClass('open');
+    });
 
     const rating = 2.4;
     let fullStars = Math.floor(rating);
@@ -408,14 +405,22 @@ $(document).ready(function () {
                 const isSelected = index === 0 ? 'selected' : '';
                 
                 const variantHtml = `
-                    <div class="variant-option ${isSelected}" 
+                    <div class="variant-option-card ${isSelected}" 
                          data-v-id="${variant.id}" 
                          data-v-name="${variant.name}" 
                          data-v-price="${variant.price}"
                          data-v-old-price="${variant.old_price || ''}">
-                         ${variant.name}
+                         
+                         <div class="custom-radio-ui"></div>
+                         
+                         <div class="variant-info">
+                            <span class="v-name">${variant.name}</span>
+                            </div>
+                         
+                         <div class="v-price">${variant.price} جنيه</div>
                     </div>
                 `;
+                
                 variantsContainer.append(variantHtml);
 
                 if (index === 0) {
@@ -437,8 +442,8 @@ $(document).ready(function () {
         $('body').addClass('modal-open');
     });
 
-    $(document).on('click', '.variant-option', function() {
-        $('.variant-option').removeClass('selected');
+    $(document).on('click', '.variant-option-card', function() {
+        $('.variant-option-card').removeClass('selected');
         $(this).addClass('selected');
 
         const newId = $(this).data('v-id');

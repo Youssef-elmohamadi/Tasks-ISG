@@ -1603,7 +1603,7 @@ body.modal-open {
   background: #fff;
   padding: 35px;
   border-radius: 8px;
-  width: 90%;
+  width: 85%;
   max-width: 900px;
   max-height: 90vh;
   overflow-y: auto;
@@ -1642,6 +1642,7 @@ body.modal-open {
   font-weight: bold;
   color: #333;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .modal-details-col .prices {
@@ -1649,16 +1650,17 @@ body.modal-open {
 }
 
 .modal-details-col .final-price {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #ffbe33; 
   margin-left: 10px;
 }
 
 .modal-details-col .original-price {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #999;
 }
+
 
 .modal-details-col .rating {
   margin-bottom: 20px;
@@ -1691,6 +1693,43 @@ body.modal-open {
   background-color: #e6ac2b;
 }
 
+@media (max-width: 569px) {
+  .modal-details-col h2 {
+    font-size: 1rem;
+  }
+  .modal-details-col .final-price {
+    font-size: 1.2rem;
+  }
+  
+  .modal-details-col .original-price {
+    font-size: 0.7rem;
+  }
+  .modal-details-col .rating {
+    margin-bottom: 20px;
+    color: #f8b600;
+    font-size: 0.9rem;
+  }
+
+  .modal-details-col #modal-product-description {
+    font-size: 0.7rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  .modal-details-col .add-to-cart-btn {
+    width: 100%;
+    background-color: #ffbe33;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+}
 .product-card .image-wrapper {
   cursor: pointer;
 }
@@ -1725,32 +1764,118 @@ body.modal-open {
     margin-bottom: 8px;
 }
 
+/* --- تنسيق حاوية المتغيرات (Variants Container) --- */
 .variants-wrapper {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column; /* ترتيب عمودي */
     gap: 10px;
+    max-height: 200px; /* تحديد ارتفاع لظهور السكرول إذا كانت الخيارات كثيرة */
+    overflow-y: auto;
+    padding: 5px; /* مساحة للظل */
 }
 
-.variant-option {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+/* --- تنسيق كل خيار (Variant Option) --- */
+.variant-option-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fff;
     cursor: pointer;
-    background: #fff;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+    position: relative;
 }
 
-.variant-option:hover {
+/* تأثير الهوفر */
+.variant-option-card:hover {
     border-color: #ffbe33;
+    background-color: #fffaf0; /* لون أصفر فاتح جداً */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
-.variant-option.selected {
+/* الحالة النشطة (Selected) */
+.variant-option-card.selected {
+    border: 2px solid #ffbe33;
+    background-color: #fff9eb;
+}
+
+/* تنسيق الـ Radio Button المخصص */
+.variant-radio {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin-left: 12px; /* مسافة عن النص */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+/* النقطة داخل الـ Radio */
+.variant-radio::after {
+    content: '';
+    width: 10px;
+    height: 10px;
     background-color: #ffbe33;
-    color: #fff;
+    border-radius: 50%;
+    transform: scale(0); /* مخفية افتراضياً */
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* تفعيل الـ Radio عند الاختيار */
+.variant-option-card.selected .variant-radio {
     border-color: #ffbe33;
-    box-shadow: 0 2px 5px rgba(255, 190, 51, 0.4);
+}
+.variant-option-card.selected .variant-radio::after {
+    transform: scale(1); /* إظهار النقطة */
+}
+
+/* تفاصيل النص والسعر */
+.variant-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.variant-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.variant-weight {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.variant-price-tag {
+    font-weight: bold;
+    color: #ffbe33;
+    font-size: 1rem;
+    background: #fff;
+    padding: 2px 8px;
+    border-radius: 5px;
+    /* border: 1px solid #eee;  اختياري */
+}
+
+/* تخصيص السكرول بار للقائمة */
+.variants-wrapper::-webkit-scrollbar {
+    width: 5px;
+}
+.variants-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.variants-wrapper::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 10px;
+}
+.variants-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
 }
 
 .quantity-wrapper {
@@ -2273,8 +2398,7 @@ CART PAGE
 }
 
 .brand-side {
-    background-color: #222; 
-    background-image: url('../images/hero-bg.jpg'); 
+    background-image: url('../images/login-bg.jpg'); 
     background-size: cover;
     background-position: center;
     position: relative;
@@ -2381,22 +2505,6 @@ a.text-warning:hover {
         .split-screen {
             height: 100vh;
             width: 100%;
-        }
-
-        .brand-side {
-            background-color: #1a1a1a;
-            background-image: url('images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            height: 100vh;
-        }
-
-        .brand-side .overlay {
-            background: rgba(0, 0, 0, 0.85);
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1;
         }
         .brand-content { z-index: 2; position: relative; }
 
