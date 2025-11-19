@@ -19,15 +19,15 @@ function myMap() {
         var map = new google.maps.Map(mapElement, mapProp);
     }
 }
-
+// return the cart content from local Storage
 function getCart() {
     return JSON.parse(localStorage.getItem("cart")) || [];
 }
-
+// set new cart Product and old product to the local storage
 function saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
-
+//update cart count in the header 
 function updateCartCount() {
     const cart = getCart();
     const count = cart.reduce((t, p) => t + p.quantity, 0);
@@ -133,8 +133,7 @@ function renderCheckoutPage() {
     const itemsListContainer = $('#checkout-items-list');
 
     if (cart.length === 0) {
-        alert("عربتك فارغة! لا يمكنك إتمام الطلب.");
-        window.location.href = "cart.html";
+        if(itemsListContainer.length > 0) itemsListContainer.html('<p>لا يوجد منتجات.</p>');
         return;
     }
 
@@ -179,14 +178,41 @@ function updateModalPrice(price, oldPrice) {
     }
 }
 
+function changeImage(element) {
+    document.getElementById('mainProductImg').src = element.src;
+    $('.thumb-item').removeClass('active');
+    $(element).parent().addClass('active');
+}
+
+function selectVariant(element) {
+    $('.variant-pill').removeClass('active');
+    $(element).addClass('active');
+    
+    const price = element.getAttribute('data-price');
+    const oldPrice = element.getAttribute('data-old');
+    
+    document.getElementById('display-price').innerText = price + ' جنيه';
+    if(oldPrice) {
+        document.getElementById('display-old-price').innerText = oldPrice + ' جنيه';
+        document.getElementById('display-old-price').style.display = 'inline-block';
+    } else {
+        document.getElementById('display-old-price').style.display = 'none';
+    }
+}
+
+function updateQty(change) {
+    const input = document.getElementById('product-qty');
+    let val = parseInt(input.value);
+    if (change === 1) val++;
+    else if (val > 1) val--;
+    input.value = val;
+}
+
 $(window).on('load', function () {
     if ($(".grid").length > 0) {
         var $grid = $(".grid").isotope({
             itemSelector: ".all",
-            percentPosition: false,
-            masonry: {
-                columnWidth: ".all"
-            }
+            layoutMode: "fitRows"
         });
 
         $('.filters_menu li').click(function () {
@@ -214,11 +240,8 @@ $(document).ready(function () {
     // });
     getYear();
 
-    if ($("#cartPopup").length > 0) {
-        // $("#cartPopup").load("inc/cartPopup.html", function () {
-           
-        // });
-         function closeCartPopup() {
+    if ($("#cartPopup").length > 0) {       
+            function closeCartPopup() {
                 $('#cart-popup').fadeOut(300);
                 $('body').removeClass('modal-open');
             }
@@ -263,6 +286,7 @@ $(document).ready(function () {
                 renderCartPopup();
                 updateCartCount();
             });
+        
     }
 
     if ($("#cart-table-body").length > 0) {
@@ -330,15 +354,10 @@ $(document).ready(function () {
         $("#collapseBrand").toggleClass('open');
         $(".brand-list").toggleClass('collapsed');
     });
-    $(".category-item").click(function () {
-        $(".category-item").removeClass("active");
-        $(this).addClass("active");
-        const selectedCategory = $(this).text().trim();
-        $(".breadcrumb-active").text(selectedCategory);
-    });
-    $(".brand-item").click(function () {
-        $(".brand-item").removeClass("active");
-        $(this).addClass("active");
+
+    $(document).on('click', '.category-item, .brand-item, .categories-slider .item', function () {
+        $('.category-item, .brand-item, .categories-slider .item').removeClass('active');
+        $(this).addClass('active');
     });
 
     $('.has-child .parent-link').click(function(e) {
@@ -356,10 +375,10 @@ $(document).ready(function () {
         }
     });
 
-    $('.product-card .image-wrapper, .product-card .add-to-cart-btn').on('click', function (e) {
+    $(document).on('click', '.product-card-modern .img-box, .product-card-modern .add-to-cart-btn, .product-card .image-wrapper, .product-card .add-to-cart-btn', function (e) {
         e.preventDefault();
 
-        const card = $(this).closest('.product-card');
+        const card = $(this).closest('.product-card, .product-card-modern');
         const btnData = card.find('.add-to-cart-btn');
 
         const baseId = btnData.data('id');
@@ -372,7 +391,11 @@ $(document).ready(function () {
         
         let variants = btnData.data('variants');
         if (typeof variants === 'string') {
-            variants = JSON.parse(variants); 
+            try {
+                variants = JSON.parse(variants); 
+            } catch(e) {
+                variants = null; 
+            }
         }
 
         currentProductData = {
@@ -392,7 +415,9 @@ $(document).ready(function () {
         $('#modal-product-description').text(description);
         $('#modal-quantity-input').val(1);
         $('#modal-product-notes').val('');
-        $('#modal-product-rating').html(card.find('.rating').html());
+        if(card.find('.rating').length > 0 || card.find('.rating-stars').length > 0){
+             $('#modal-product-rating').html(card.find('.rating, .rating-stars').html());
+        }
 
         const variantsContainer = $('#modal-variants-container');
         const variantsSection = $('#modal-variants-section');
@@ -416,7 +441,7 @@ $(document).ready(function () {
                          
                          <div class="variant-info">
                             <span class="v-name">${variant.name}</span>
-                            </div>
+                         </div>
                          
                          <div class="v-price">${variant.price} جنيه</div>
                     </div>
@@ -435,7 +460,7 @@ $(document).ready(function () {
         } else {
             currentProductData.hasVariants = false;
             variantsSection.hide();
-            const oldPrice = card.find('.original-price').text().replace('جنيه', '').trim();
+            let oldPrice = card.find('.original-price, .old-price').text().replace('جنيه', '').trim();
             updateModalPrice(basePrice, oldPrice);
         }
 
@@ -511,6 +536,37 @@ $(document).ready(function () {
 
         closeProductModal();
     });
+    $('.btn-direct-add').on('click', function () {
+        
+        const activeVariant = $('.variant-pill.active');
+        const variantPrice = activeVariant.length ? parseFloat(activeVariant.data('price')) : 0;
+        const variantName = activeVariant.length ? activeVariant.find('span').text().trim() : '';
+        const baseId = $(this).data('id');
+        const baseName = $(this).data('name');
+        const imageSrc = $('#mainProductImg').attr('src');
+        const qty = parseInt($('#product-qty').val()) || 1;
+        const finalId = baseId + '-' + variantName.replace(/\s/g, ''); 
+        const finalName = baseName + ' (' + variantName + ')';
+        const productToAdd = {
+            id: finalId,
+            name: finalName,
+            price: variantPrice,
+            image: imageSrc,
+            quantity: qty
+        };
+        let cart = getCart();
+        const existingProduct = cart.find(p => p.id == productToAdd.id);
+
+        if (existingProduct) {
+            existingProduct.quantity += qty;
+        } else {
+            cart.push(productToAdd);
+        }
+        saveCart(cart);
+        updateCartCount();
+        showCartPopup(); 
+        renderCartPopup();
+    });
 
     $('.modal-close-btn, #product-modal-overlay').on('click', function (e) {
         if (e.target === this) {
@@ -526,18 +582,48 @@ $(document).ready(function () {
         $(".client_owl-carousel").owlCarousel({
             loop: true,
             margin: 0,
-            dots: false,
-            nav: true,
-            navText: [
-                '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-                '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-            ],
+            dots: true,
+            nav: false, 
             autoplay: true,
             autoplayHoverPause: true,
+            rtl: true,
             responsive: {
                 0: { items: 1 },
-                768: { items: 2 },
-                1000: { items: 2 }
+                768: { items: 2 }, 
+                1000: { items: 3 } 
+            }
+        });
+    }
+
+    if ($('.category-slider').length > 0) {
+        $(".category-slider").owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: true, 
+            dots: false, 
+            autoplay: false, 
+            rtl: true,
+            navText: ['<i class="fa fa-angle-right"></i>', '<i class="fa fa-angle-left"></i>'],
+            autoWidth: true, 
+            responsive: {
+                0: { items: 2 },
+                600: { items: 3 },
+                1000: { items: 6 }
+            }
+        });
+    }
+    
+    if ($(".thumbnails-list").length > 0) {
+        $(".thumbnails-list").owlCarousel({
+            loop: false,
+            margin: 10,
+            nav: true,
+            dots: false,
+            rtl: true,
+            responsive: {
+                0: { items: 3 },
+                600: { items: 4 },
+                1000: { items: 4 }
             }
         });
     }
