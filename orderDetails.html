@@ -5,32 +5,22 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="keywords" content="فروع أوردراتي, سوبر ماركت, توصيل" />
-  <meta name="description" content="اختر الفرع الأقرب إليك من سوبر ماركت أوردراتي" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
-
-  <title> فروعنا - أوردراتي </title>
+  <title> تفاصيل الطلب - أوردراتي </title>
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
   <link href="css/all.min.css" rel="stylesheet" />
-
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <link href="css/rtl.css" rel="stylesheet" />
-
 </head>
 
 <body class="sub_page">
 
   <div class="hero_area">
-    <div class="bg-box">
-      <img src="images/hero-bg.png" alt="">
-    </div>
-<div id="header">
-      <header class="header_section">
+    <div class="bg-box"><img src="images/hero-bg.jpg" alt=""></div>
+    <div id="header">
+              <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
@@ -133,114 +123,108 @@
         </nav>
       </div>
     </header>
-</div>
     </div>
+  </div>
 
-  <section class="branches_section layout_padding">
+  <section class="order_details_section">
     <div class="container">
         
-        <div class="heading_container heading_center mb-5">
-            <h2>اختر الفرع الأقرب إليك</h2>
-            <p class="text-muted">نغطي معظم المناطق لخدمتكم بشكل أسرع</p>
-        </div>
+        <!-- <div class="checkout-progress">
+            <div class="progress-line"></div>
+            <div class="progress-step completed"><i class="fa fa-check"></i></div>
+            <div class="progress-step active">2</div>
+            <div class="progress-step">3</div>
+        </div> -->
 
         <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="order-card">
+                    <div class="deco-circle"></div>
+                    
+                    <h2>تفاصيل الطلب</h2>
+                    <p class="subtitle">يرجى ملء البيانات التالية لإتمام الطلب</p>
 
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="branch-card">
-                    <span class="status-badge open">
-                        <i class="fa-solid fa-circle-check"></i> مفتوح
-                    </span>
-                    <div class="branch-icon">
-                        <i class="fa-solid fa-shop"></i>
-                    </div>
-                    <div class="branch-info">
-                        <h3>فرع التجمع الخامس</h3>
-                        <p class="address">
-                            <i class="fa-solid fa-location-dot"></i> شارع التسعين الجنوبي
-                        </p>
-                        <div class="hours">
-                            <i class="fa-regular fa-clock"></i> 9:00 ص - 12:00 م
+                    <form action="#">
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label>الاسم الأول</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-user"></i>
+                                        <input type="text" class="form-control" placeholder="ادخل الاسم الأول" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label>اسم العائلة</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-user"></i>
+                                        <input type="text" class="form-control" placeholder="ادخل الاسم الأخير" value="">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <a href="orderDetails.html" class="btn-select-branch">
-                            اطلب من هنا <i class="fa-solid fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="branch-card closed-branch"> 
-                    <span class="status-badge closed">
-                        <i class="fa-solid fa-circle-xmark"></i> مغلق
-                    </span>
-                    <div class="branch-icon">
-                        <i class="fa-solid fa-store-slash"></i>
-                    </div>
-                    <div class="branch-info">
-                        <h3>فرع الرحاب (السوق الشرقي)</h3>
-                        <p class="address">
-                            <i class="fa-solid fa-location-dot"></i> السوق الشرقي، بوابة 6
-                        </p>
-                        <div class="hours">
-                            <i class="fa-regular fa-clock"></i> 10:00 ص - 10:00 م
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label>رقم الهاتف</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-phone-flip"></i>
+                                        <input type="tel" class="form-control" placeholder="01xxxxxxxxx" value="" style="direction: ltr; text-align: right;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label>البريد الإلكتروني</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-envelope"></i>
+                                        <input type="email" class="form-control" value="" placeholder="ادخل البريد الإلكتروني">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button class="btn-select-branch disabled" disabled>
-                            مغلق حالياً
+
+                        <div class="form-group mb-3">
+                            <label>طريقة التوصيل</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-truck-fast"></i>
+                                <select class="form-control" aria-placeholder="اختر طريقة التوصيل">
+                                    <option value="">اختر طريقة التوصيل</option>
+                                    <option value="">توصيل للمنزل</option>
+                                    <option value="">استلام من الفرع</option>
+                                </select>
+                                <span class="select-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label>ملاحظات إضافية (اختياري)</label>
+                            <div class="input-wrapper">
+                                <i class="fa-regular fa-comment-dots textarea-icon" style="top: 20px;"></i>
+                                <textarea class="form-control" rows="3" placeholder="ادخل ملاحظات إضافية (اختياري)"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            تأكيد ومتابعة <i class="fa-solid fa-arrow-left ms-2"></i>
                         </button>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="branch-card">
-                    <span class="status-badge open">
-                        <i class="fa-solid fa-circle-check"></i> مفتوح
-                    </span>
-                    <div class="branch-icon">
-                        <i class="fa-solid fa-shop"></i>
-                    </div>
-                    <div class="branch-info">
-                        <h3>فرع الرحاب (السوق القديم)</h3>
-                        <p class="address">
-                            <i class="fa-solid fa-location-dot"></i> السوق القديم
-                        </p>
-                        <div class="hours">
-                            <i class="fa-regular fa-clock"></i> 9:00 ص - 11:00 م
-                        </div>
-                        <a href="orderDetails.html" class="btn-select-branch">
-                            اطلب من هنا <i class="fa-solid fa-arrow-left"></i>
+                        <a href="branches.html" class="btn-back">
+                            <i class="fa-solid fa-rotate-right"></i> العودة لاختيار الفرع
                         </a>
-                    </div>
+
+                    </form>
                 </div>
             </div>
-
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="branch-card">
-                    <span class="status-badge open">
-                        <i class="fa-solid fa-circle-check"></i> مفتوح
-                    </span>
-                    <div class="branch-icon">
-                        <i class="fa-solid fa-shop"></i>
-                    </div>
-                    <div class="branch-info">
-                        <h3>فرع مدينتي</h3>
-                        <p class="address">
-                            <i class="fa-solid fa-location-dot"></i> أرابيسك مول
-                        </p>
-                        <div class="hours">
-                            <i class="fa-regular fa-clock"></i> 9:00 ص - 12:00 م
-                        </div>
-                        <a href="orderDetails.html" class="btn-select-branch">
-                            اطلب من هنا <i class="fa-solid fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
         </div>
+
     </div>
   </section>
+
 <footer class="footer_section">
     <div id="footer">
         <div class="container">
@@ -311,14 +295,9 @@
         </div>
     </div>
 </footer>
-  <div id="cartPopup"></div>
 
   <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="js/bootstrap.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <script src="js/custom.js"></script>
 
 </body>
