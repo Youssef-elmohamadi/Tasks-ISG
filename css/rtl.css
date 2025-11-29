@@ -1203,6 +1203,208 @@ a:focus {
   background-color: #e69c00;
 }
 
+/* --- تنسيق قائمة لوحة التحكم (Dashboard Dropdown) --- */
+
+.dashboard_box {
+    position: relative;
+    display: inline-block;
+    margin-left: 15px; /* مسافة بينها وبين العناصر الأخرى */
+}
+
+.dashboard_link {
+    color: #ffffffff;
+    font-size: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+}
+
+.dashboard_link:hover, .dashboard_box.active .dashboard_link {
+    color: #be8756; /* لون الهوية */
+}
+
+/* القائمة المنبثقة */
+.dashboard_dropdown {
+    display: none; /* مخفية افتراضياً */
+    position: absolute;
+    top: 160%; /* المسافة من الأعلى */
+    left: 0; /* محاذاة لليسار */
+    background-color: #fff;
+    min-width: 180px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 1000;
+    padding: 0;
+    border: 1px solid #f0f0f0;
+    text-align: right; /* محاذاة النصوص لليمين */
+}
+
+/* سهم صغير فوق القائمة */
+.dashboard_dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 20px; /* مكان السهم */
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+/* ظهور القائمة */
+.dashboard_dropdown.show {
+    display: block;
+    animation: fadeInMove 0.3s ease;
+}
+
+/* رأس القائمة (اسم المستخدم) */
+.user-info-header {
+    padding: 5px 15px 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+.user-info-header p {
+    margin: 0;
+    font-weight: bold;
+    color: #ffbe33;
+    font-size: 14px;
+}
+
+/* عناصر القائمة */
+.dash_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.dash_item i {
+    width: 20px;
+    text-align: center;
+    color: #999;
+    transition: 0.2s;
+}
+
+.dash_item:hover {
+    background-color: #fff9eb; /* خلفية ذهبية فاتحة جداً */
+    color: #333;
+}
+
+.dash_item:hover i {
+    color: #ffbe33;
+}
+
+/* خط فاصل */
+.dash-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 5px 0;
+}
+
+/* زر الخروج */
+.dash_item.logout:hover {
+    background-color: #fee; /* خلفية حمراء فاتحة */
+    color: #dc3545;
+}
+.dash_item.logout:hover i {
+    color: #dc3545;
+}
+
+/* أنيميشن */
+@keyframes fadeInMove {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* langs popup */
+/* --- تنسيق قائمة اللغة (Language Popup) --- */
+
+.lang_box {
+    position: relative;
+    display: inline-block;
+}
+
+.lang_link {
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: 0.3s;
+    padding: 5px;
+    display: block;
+}
+
+.lang_link:hover, .lang_box.active .lang_link {
+    color: #be8756; /* لون الهوية */
+}
+
+/* القائمة المنبثقة */
+.lang_dropdown {
+    display: none; /* مخفية افتراضياً */
+    position: absolute;
+    top: 140%; /* تظهر أسفل الأيقونة */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    min-width: 140px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    z-index: 1000;
+    padding: 10px 0;
+    border: 1px solid #eee;
+}
+
+/* سهم صغير فوق القائمة (اختياري لجمال التصميم) */
+.lang_dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.lang_dropdown.show {
+    display: block;
+    animation: fadeInDown 0.3s ease;
+}
+
+/* عناصر القائمة */
+.lang_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 15px;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.lang_item:hover {
+    background-color: #f9f9f9;
+    color: #ffbe33;
+}
+
+.lang_item.active {
+    font-weight: bold;
+    color: #ffbe33;
+    background-color: #fffbf0;
+}
+
+/* أنيميشن بسيط للظهور */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
 /* branches Page */
 
 /* =========================================

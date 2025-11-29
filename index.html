@@ -129,6 +129,47 @@
                 </svg>
                 <span id="cart-count">0</span>
               </a>
+              <!-- dashboard popup -->
+               <div class="dashboard_box">
+    <a href="#" class="dashboard_link" id="dashboardBtn">
+        <i class="fa-solid fa-user-gear"></i> <span class="d-none d-md-inline-block ms-1">لوحة التحكم</span>
+    </a>
+    
+    <div class="dashboard_dropdown" id="dashboardPopup">
+        <div class="user-info-header">
+            <p>مرحباً، يوسف</p>
+        </div>
+
+        <a href="orders.html" class="dash_item">
+            <i class="fa-solid fa-bag-shopping"></i> الطلبات
+        </a>
+        
+        <a href="profile.html" class="dash_item">
+            <i class="fa-regular fa-id-card"></i> بيانات العميل
+        </a>
+
+        <div class="dash-divider"></div>
+
+        <a href="#" class="dash_item logout">
+            <i class="fa-solid fa-power-off"></i> خروج
+        </a>
+    </div>
+</div>
+                <!-- langs popup -->
+
+    <div class="lang_box">
+        <a href="#" class="lang_link" id="langBtn">
+            <i class="fa-solid fa-globe"></i> </a>
+        
+        <div class="lang_dropdown" id="langPopup">
+            <a href="#" class="lang_item active">
+                <img src="images/egypt-flag.png" alt="AR" width="20"> العربية
+            </a>
+            <a href="#" class="lang_item">
+                <img src="images/us-flag.png" alt="EN" width="20"> English
+            </a>
+        </div>
+    </div>
               <form class="form-inline">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
@@ -596,7 +637,7 @@
         </div>
     </div>
 </footer>
-  <!-- footer section -->
+  <!--end footer section -->
 <!-- cart popup -->
  <div id="cartPopup">
 <div id="cart-popup" class="cart-popup-overlay">

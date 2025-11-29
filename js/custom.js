@@ -229,16 +229,47 @@ $(window).on('load', function () {
 
 $(document).ready(function () {
 
-    // $("#header").load("inc/header.html", function () {
-    // });
     var currentPage = window.location.pathname.split("/").pop();
     if (currentPage === "") currentPage = "index.html";
     $('#header a[href="' + currentPage + '"]').addClass('active');
     updateCartCount();
-
-    // $("#footer").load("inc/footer.html", function () {
-    // });
     getYear();
+
+    $(document).on('click', '#langBtn', function(e) {
+        e.preventDefault();
+        e.stopPropagation(); // يمنع وصول الضغطة للـ document فوراً
+        
+        $('#langPopup').toggleClass('show'); // تبديل كلاس show (فتح/غلق)
+        $('.lang_box').toggleClass('active'); // لتلوين الأيقونة
+    });
+
+    // عند الضغط في أي مكان آخر في الصفحة (لإغلاق القائمة)
+    $(document).on('click', function(e) {
+        // لو الضغطة مش جوه الـ lang_box ولا جوه الـ Popup نفسه
+        if (!$(e.target).closest('.lang_box').length) {
+            $('#langPopup').removeClass('show');
+            $('.lang_box').removeClass('active');
+        }
+    });
+
+    $(document).on('click', '#dashboardBtn', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // إغلاق أي بوب أب آخر مفتوح (مثل اللغة)
+        $('#langPopup').removeClass('show'); 
+        
+        $('#dashboardPopup').toggleClass('show');
+        $('.dashboard_box').toggleClass('active');
+    });
+
+    // إغلاق عند الضغط خارج القائمة
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dashboard_box').length) {
+            $('#dashboardPopup').removeClass('show');
+            $('.dashboard_box').removeClass('active');
+        }
+    });
 
     if ($("#cartPopup").length > 0) {       
             function closeCartPopup() {
